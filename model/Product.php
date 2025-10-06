@@ -3,26 +3,21 @@
 class Product
 {
 
-    public $produits = [
-        "MacBook air M4" => "999",
-        "Iphone 14 Pro" => "1249",
-        "Xiaomi 17 Pro" => "799",
-        "Cookie Choco" => "4",
-        "Bonbon" => "2",
-        "Pate Panzanie" => "3"
-    ];
+    public $produits;
+    public $price;
 
-    function __construct()
+    function __construct($produits, $price)
     {
-        $this->produits;
+        $this->produits = $produits;
+        $this->price = $price;
     }
 
-    public function afficherProduits()
-    {
-        return $this->produits;
-    }
+//     public function afficherProduits()
+//     {
+//         return $this->produits;
+//     }
 
-    public function afficherProduit(){
-        return $this->produits;
-    }
+//     public function afficherProduit(){
+//         return $this->produits;
+//     }
 }

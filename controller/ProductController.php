@@ -4,22 +4,15 @@ require_once "./model/Product.php";
 
 class ProductController
 {
-    public $produits;
+    public $produitDao;
 
-    public function afficherProduits()
+    public function __construct($produitDao)
     {
-        $productModel = new Product();
-        $produits = $productModel->afficherProduits();
-        extract($produits);
-        require_once "./view/productsView.php";
+        $this->produitDao = $produitDao;
     }
 
-    public function afficherproduit(){
-        $productModel = new Product();
-        $produit = $productModel->afficherproduit();
-        $produitSeul = $_GET['id'];
-        $nom = $produitSeul;
-        $prix = $produit[$produitSeul];
-        require_once "./view/productView.php";
+    public function displayAllProduct(){
+        $products = $this->produitDao->getAllProduct();
+        require_once "./view/ProductsView.php";
     }
 }

@@ -9,9 +9,13 @@
     <h1>Les Produits</h1>
 
     <ul>
-        <?php foreach($produits as $nom => $prix):?>
-            <li><a href="index.php?page=Product&id=<?php echo $nom; ?>"><?php echo $nom; ?> : <?php echo $prix; ?>€</a></li>
-            <?php endforeach; ?>
+        <?php foreach($products as $product):?>
+            <li>
+                <a href="index.php?page=Products&id=<?php echo htmlspecialchars($product->produits); ?>">
+                    <?php echo htmlspecialchars($product->produits); ?> : <?php echo htmlspecialchars($product->price); ?>€
+                </a>
+            </li>
+        <?php endforeach; ?>
     </ul>
 </body>
 </html>

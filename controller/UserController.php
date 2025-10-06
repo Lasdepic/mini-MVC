@@ -3,9 +3,15 @@ require_once "./model/User.php";
 
 class UserController{
 
-    public function afficherName($name){
-        $user = new User($name);
-        require "./view/userView.php";
+    public $userDao;
+
+    public function __construct($userDao)
+    {
+        $this->userDao = $userDao;
+    }
+    public function displayAllusers(){
+        $users = $this->userDao->getAllUser();
+        require_once "./view/userView.php";
     }
 }
 ?>

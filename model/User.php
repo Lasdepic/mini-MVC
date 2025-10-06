@@ -1,15 +1,17 @@
 <?php
 
 class User{
-    public $name;
+    public int $id;
+    public $nom;
 
-    function __construct($name){
-        $this->name = $name;
+    function __construct($id, $nom){
+        $this->id = $id;
+        $this->nom = $nom;
     }
 
-    public function afficherName($name){
-        $this->name = $name;
-    }
+    // public function afficherName($id, $nom, $prénom){
+    //     $this->nom = $nom;
+    // }
 }
 
 
