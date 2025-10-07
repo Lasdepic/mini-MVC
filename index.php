@@ -7,9 +7,8 @@ require_once "./db.php";
 
 $pdo = DataBase::getConnexion();
 $userDao = new UserDao($pdo);
-$users = $userDao->getAllUser();
-
 $produitDao = new ProductsDao($pdo);
+
 
 
 
@@ -17,7 +16,7 @@ if (isset($_GET['page'])) {
     $page = $_GET['page'];
 
     switch ($page) {
-        case 'user':
+        case 'users':
             $user = new UserController($userDao);
             $user->displayAllusers();
             break;
@@ -28,6 +27,10 @@ if (isset($_GET['page'])) {
         case 'Product':
             $produit = new ProductController($produitDao);
             $produit->displayOneProduct();
+            break;
+        case 'user':
+            $user = new UserController($userDao);
+            $user->displayOneUser();
             break;
         default:
             echo "Page 404 non trouvé";

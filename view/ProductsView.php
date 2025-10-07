@@ -11,8 +11,8 @@
     <ul>
         <?php foreach($products as $product):?>
             <li>
-                <a href="index.php?page=Products&id=<?php echo htmlspecialchars($product->produits); ?>">
-                    <?php echo htmlspecialchars($product->produits); ?> : <?php echo htmlspecialchars($product->price); ?>€
+                <a href="index.php?page=Product&id=<?= $product->id ?>">
+                    <?php echo htmlspecialchars($product->produits); ?> : <?php echo htmlspecialchars($product->price); ?> : <?php var_dump($product) ?>;€
                 </a>
             </li>
         <?php endforeach; ?>

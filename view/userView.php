@@ -8,8 +8,10 @@
 </head>
 
 <body>
+    <h1>Liste des utilisateurs</h1>
     <?php foreach ($users as $user): ?>
-        <h1>Utilisateur : <?= htmlspecialchars($user->nom, ENT_QUOTES, 'UTF-8') ?></h1>
+            <h2>Utilisateur : <?= htmlspecialchars($user->nom, ENT_QUOTES, 'UTF-8') ?></h2>
+            <a href="index.php?page=user&id=<?= $user->id ?>">Voir le profil</a>
     <?php endforeach; ?>
 </body>
 

@@ -13,5 +13,11 @@ class UserController{
         $users = $this->userDao->getAllUser();
         require_once "./view/userView.php";
     }
+
+    public function displayOneUser(){
+        $id = $_GET['id'];
+        $user = $this->userDao->getOneUser($id);
+        require "./view/userDetail.php";
+    }
 }
 ?>

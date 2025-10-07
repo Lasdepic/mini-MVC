@@ -17,8 +17,10 @@ class ProductController
     }
 
     public function displayOneProduct(){
-        $id = $_GET['id'];
+        $id = $_GET["id"];
         $product = $this->produitDao->getOneProduct($id);
         require_once "./view/productView.php";
     }
 }
+
+

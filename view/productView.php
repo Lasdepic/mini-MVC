@@ -8,8 +8,10 @@
 <body>
     <h1>Le Produit</h1>
 
-        <ul>
-            <li><?php echo htmlspecialchars($product->produits); ?> : <?php echo htmlspecialchars($product->price); ?>€</li>
-        </ul>
+    <h2><?php echo htmlspecialchars($product->produits); ?></h2>
+    <p>Prix : <?php echo htmlspecialchars($product->price); ?>€</p>
+    
+    <br>
+    <a href="index.php?page=Products">Retour à la liste</a>
     </body>
 </html>

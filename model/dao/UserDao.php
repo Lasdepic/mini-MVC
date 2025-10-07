@@ -25,5 +25,18 @@ class UserDao
 
         return $users;
     }
+
+    public function getOneUser($id){
+        $query = "SELECT * FROM Users WHERE id_user = :id";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute([':id' => $id]);
+        $dataUser = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if($dataUser){
+            return new User($dataUser['id_user'], $dataUser['User']);
+        }else {
+            return null;
+        }
+    }
 }
 

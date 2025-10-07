@@ -1,6 +1,7 @@
 <?php
 
-class ProductsDao{
+class ProductsDao
+{
     private PDO $pdo;
 
     function __construct(PDO $pdo)
@@ -8,30 +9,34 @@ class ProductsDao{
         $this->pdo = $pdo;
     }
 
-    public function getAllProduct(){
+    public function getAllProduct()
+    {
         $query = "SELECT * FROM Produits";
         $stmt = $this->pdo->prepare($query);
         $stmt->execute();
         $dataProduct = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         $products = [];
-
-        foreach($dataProduct as $produit){
-            $produit = new Product($produit['produits'], $produit['prix']);
-            $products[] = $produit;
+        foreach ($dataProduct as $produit) {
+            $product = new Product( $produit['id_produits'], $produit['produits'], $produit['prix']);
+            $products[] = $product;
         }
+        var_dump($products);
         return $products;
     }
 
-    public function getOneProduct(){
-        $query = "SELECT * FROM Produits WHERE id = :id";
+    public function getOneProduct($id)
+    {
+        $query = "SELECT * FROM `Produits` WHERE id_produits = :id";
         $stmt = $this->pdo->prepare($query);
-        $stmt->execute();
-        $produit = $stmt->fetch(PDO::FETCH_ASSOC);
+        $stmt->execute([":id" => $id]);
+        $dataProduit = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        $product = new Product($produit['produits'], $produit['prix']);
-        return $product;
+
+        if ($dataProduit) {
+            return new Product(id: $dataProduit['id_produits'], produits: $dataProduit['produits'], price: $dataProduit['prix']);
+        } else {
+            return null;
+        }
     }
 }
-
-?>
