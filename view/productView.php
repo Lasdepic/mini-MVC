@@ -8,8 +8,8 @@
 <body>
     <h1>Le Produit</h1>
 
-    <ul>
-            <li><?php echo $nom; ?> : <?php echo $prix; ?>€</li>
-    </ul>
-</body>
+        <ul>
+            <li><?php echo htmlspecialchars($product->produits); ?> : <?php echo htmlspecialchars($product->price); ?>€</li>
+        </ul>
+    </body>
 </html>

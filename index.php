@@ -10,7 +10,6 @@ $userDao = new UserDao($pdo);
 $users = $userDao->getAllUser();
 
 $produitDao = new ProductsDao($pdo);
-$produits = $produitDao->getAllProduct();
 
 
 
@@ -25,6 +24,10 @@ if (isset($_GET['page'])) {
         case 'Products':
             $produits = new ProductController($produitDao);
             $produits->displayAllProduct();
+            break;
+        case 'Product':
+            $produit = new ProductController($produitDao);
+            $produit->displayOneProduct();
             break;
         default:
             echo "Page 404 non trouvé";
