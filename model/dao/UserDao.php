@@ -26,17 +26,31 @@ class UserDao
         return $users;
     }
 
-    public function getOneUser($id){
+    public function getOneUser($id)
+    {
         $query = "SELECT * FROM Users WHERE id_user = :id";
         $stmt = $this->pdo->prepare($query);
         $stmt->execute([':id' => $id]);
         $dataUser = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if($dataUser){
+        if ($dataUser) {
             return new User($dataUser['id_user'], $dataUser['User']);
-        }else {
+        } else {
             return null;
         }
     }
-}
 
+    public function deleteUser($id)
+    {
+        $query = "DELETE FROM Users WHERE id_user = :id";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute([':id' => $id]);
+    }
+
+    public function addUser($name)
+    {
+        $query = "INSERT INTO Users (User) VALUES (:name)";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute([":name" => $name]);
+    }
+}

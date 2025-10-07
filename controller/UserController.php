@@ -19,5 +19,23 @@ class UserController{
         $user = $this->userDao->getOneUser($id);
         require "./view/userDetail.php";
     }
+
+    public function deleteOneUser(){
+        $id = $_GET['id'];
+        $userDelete = $this->userDao->deleteUser($id);
+
+        if($userDelete) {
+            header("Location: index.php?page=users");
+        }
+        exit();
+    }
+
+    public function addOneUser()
+    {
+        $nomUser = $_POST['nom'];
+        $this->userDao->addUser($nomUser);
+        header("Location: index.php?page=users");
+        exit();
+    }
 }
 ?>

@@ -18,10 +18,9 @@ class ProductsDao
 
         $products = [];
         foreach ($dataProduct as $produit) {
-            $product = new Product( $produit['id_produits'], $produit['produits'], $produit['prix']);
+            $product = new Product($produit['id_produits'], $produit['produits'], $produit['prix']);
             $products[] = $product;
         }
-        var_dump($products);
         return $products;
     }
 
@@ -38,5 +37,19 @@ class ProductsDao
         } else {
             return null;
         }
+    }
+
+    public function deleteProduct($id)
+    {
+        $query = "DELETE FROM `Produits` WHERE id_produits = :id";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute([":id" => $id]);
+    }
+
+    public function addProduct($produits, $prix)
+    {
+        $query = "INSERT INTO `Produits` (produits, prix) VALUES (:produits, :prix)";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute([":produits" => $produits, ":prix" => $prix]);
     }
 }

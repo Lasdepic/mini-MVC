@@ -28,9 +28,25 @@ if (isset($_GET['page'])) {
             $produit = new ProductController($produitDao);
             $produit->displayOneProduct();
             break;
+        case 'addProduct':
+            $produit = new ProductController($produitDao);
+            $produit->addOneProduct();
+            break;
         case 'user':
             $user = new UserController($userDao);
             $user->displayOneUser();
+            break;
+        case 'addUser':
+            $user = new UserController($userDao);
+            $user->addOneUser();
+            break;
+        case 'deleteUser':
+            $user = new UserController($userDao);
+            $user->deleteOneUser();
+            break;
+        case 'deleteProduct':
+            $produit = new ProductController($produitDao);
+            $produit->deleteOneProduct();
             break;
         default:
             echo "Page 404 non trouvé";
