@@ -21,12 +21,9 @@ class UserController{
     }
 
     public function deleteOneUser(){
-        $id = $_GET['id'];
-        $userDelete = $this->userDao->deleteUser($id);
-
-        if($userDelete) {
-            header("Location: index.php?page=users");
-        }
+        $id = $_POST['id'];
+        $this->userDao->deleteUser($id);
+        header("Location: index.php?page=users");
         exit();
     }
 
@@ -37,5 +34,19 @@ class UserController{
         header("Location: index.php?page=users");
         exit();
     }
+
+    public function displayEditUser(){
+    $id = $_GET["id"];
+    $user = $this->userDao->getOneUser($id);
+    require_once "./view/editUser.php";
+}
+
+public function editOneUser(){
+    $id = $_POST["id"];
+    $nom = $_POST["nom"];
+    $this->userDao->editUser($nom, $id);
+    header("Location: index.php?page=users");
+    exit();
+}
 }
 ?>

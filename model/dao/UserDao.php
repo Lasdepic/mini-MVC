@@ -53,4 +53,11 @@ class UserDao
         $stmt = $this->pdo->prepare($query);
         $stmt->execute([":name" => $name]);
     }
+
+     public function editUser($name, $id)
+    {
+        $query = "UPDATE Users SET User = :name WHERE id_user = :id";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute([":name" => $name, ":id" => $id]);
+    }
 }

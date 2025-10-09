@@ -52,4 +52,10 @@ class ProductsDao
         $stmt = $this->pdo->prepare($query);
         $stmt->execute([":produits" => $produits, ":prix" => $prix]);
     }
+
+    public function editProduct($produits, $prix, $id){
+    $query = "UPDATE Produits SET produits = :produits, prix = :prix WHERE id_produits = :id";
+    $stmt = $this->pdo->prepare($query);
+    $stmt->execute([":produits" => $produits, ":prix" => $prix, ":id" => $id]);
+}
 }

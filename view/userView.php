@@ -19,7 +19,17 @@
     <?php foreach ($users as $user): ?>
         <h2>Utilisateur : <?= htmlspecialchars($user->nom, ENT_QUOTES, 'UTF-8') ?></h2>
         <a href="index.php?page=user&id=<?= $user->id ?>">Voir le profil</a>
-        <a href="index.php?page=deleteUser&id=<?= $user->id ?>">x</a>
+
+        <a href="index.php?page=editUserForm&id=<?= $user->id ?>">
+            <button type="button">Modifier ✍🏻</button>
+        </a>
+
+        <form action="index.php?page=deleteUser" method="POST" style="display: inline;">
+            <input type="hidden" name="id" value="<?= $user->id ?>">
+            <button type="submit">
+                Supprimer ✕
+            </button>
+        </form>
     <?php endforeach; ?>
     <a href="index.php?page=Products">Produits</a>
 </body>

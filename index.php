@@ -44,16 +44,31 @@ if (isset($_GET['page'])) {
             $user = new UserController($userDao);
             $user->deleteOneUser();
             break;
+        case 'editUser':
+            $user = new UserController($userDao);
+            $user->editOneUser();
+            break;
         case 'deleteProduct':
             $produit = new ProductController($produitDao);
             $produit->deleteOneProduct();
+            break;
+        case 'editProduct':
+            $produit = new ProductController($produitDao);
+            $produit->editOneProduct();
+            break;
+        case 'editUserForm':
+            $user = new UserController($userDao);
+            $user->displayEditUser();
+            break;
+        case 'editProductForm':
+            $produit = new ProductController($produitDao);
+            $produit->displayEditProductForm();
             break;
         default:
             echo "Page 404 non trouvé";
             break;
     }
 }
-
 ######################################################################################################
 ############################## ESSAI DE CONNEXION DE BASE DE DONNEE ##################################
 ######################################################################################################
